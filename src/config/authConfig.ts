@@ -1,12 +1,33 @@
 // Auth Configuration for MongoDB-based JWT Authentication
 
+// Get API base URL with safeguards
+const getBaseUrl = (): string => {
+  // Check for global override (set by netlify.js)
+  if (
+    typeof window !== "undefined" &&
+    "API_BASE_URL" in window &&
+    window.API_BASE_URL
+  ) {
+    console.log("Using API_BASE_URL from window:", window.API_BASE_URL);
+    return window.API_BASE_URL;
+  }
+
+  // Then check for environment variable
+  if (import.meta.env.VITE_API_URL) {
+    console.log("Using VITE_API_URL from env:", import.meta.env.VITE_API_URL);
+    return import.meta.env.VITE_API_URL;
+  }
+
+  // Fallback to production URL
+  console.log("Using fallback production URL");
+  return "https://qr-generator-advanced.onrender.com/api";
+};
+
 /**
  * API Endpoints for authentication
  */
 export const AUTH_API = {
-  BASE_URL:
-    import.meta.env.VITE_API_URL ||
-    "https://qr-generator-advanced.onrender.com/api",
+  BASE_URL: getBaseUrl(),
   REGISTER: "/auth/register",
   LOGIN: "/auth/login",
   USER_INFO: "/auth/me",
