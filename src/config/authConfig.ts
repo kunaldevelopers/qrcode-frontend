@@ -4,7 +4,9 @@
  * API Endpoints for authentication
  */
 export const AUTH_API = {
-  BASE_URL: import.meta.env.VITE_API_URL || "http://localhost:5000/api",
+  BASE_URL:
+    import.meta.env.VITE_API_URL ||
+    "https://qr-generator-advanced.onrender.com/api",
   REGISTER: "/auth/register",
   LOGIN: "/auth/login",
   USER_INFO: "/auth/me",
