@@ -2,9 +2,9 @@
   "name": "qr-generator-frontend",
   "private": true,
   "version": "1.0.0",
-  "type": "module",
-  "scripts": {
+  "type": "module",  "scripts": {
     "dev": "vite",
+    "start": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview"
